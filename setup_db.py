@@ -1,7 +1,10 @@
 import sqlite3
+import os
+
 
 def setup_database():
-    connection = sqlite3.connect('users.db')
+    db_path = os.path.join(os.path.dirname(__file__), 'examples/users.db')
+    connection = sqlite3.connect(db_path)  # Ensure the correct path
     cursor = connection.cursor()
 
     # Create users table
@@ -15,6 +18,7 @@ def setup_database():
 
     connection.commit()
     connection.close()
+
 
 if __name__ == '__main__':
     setup_database()

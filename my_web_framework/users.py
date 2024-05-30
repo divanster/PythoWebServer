@@ -1,9 +1,11 @@
 import sqlite3
 import hashlib
+import os
 
 
 def get_db_connection():
-    return sqlite3.connect('users.db')
+    db_path = os.path.join(os.path.dirname(__file__), '../examples/users.db')
+    return sqlite3.connect(db_path)
 
 
 def hash_password(password):

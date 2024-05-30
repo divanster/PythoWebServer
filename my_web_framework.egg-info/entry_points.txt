@@ -1,0 +1,2 @@
+[console_scripts]
+my_web_framework = my_web_framework.core:start_server
