@@ -8,7 +8,8 @@ class SimpleHTTPRequestHandler(BaseHTTPRequestHandler):
         super().__init__(*args, **kwargs)
 
     def do_GET(self):
-        request = Request(self.command, self.path)
+        headers = {key: value for key, value in self.headers.items()}
+        request = Request(self.command, self.path, headers)
         handler = self.router.get_handler(request.path)
         status, body = handler(request)
         self.send_response(int(status.split()[0]))
